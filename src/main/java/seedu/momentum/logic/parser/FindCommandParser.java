@@ -81,13 +81,13 @@ public class FindCommandParser implements Parser<FindCommand> {
         case NONE:
             // Find none needs the logical 'and' of individual predicates.
         case ALL:
-            operationType = (a, b) -> (MomentumPredicate) a.and(b);
+            operationType = MomentumPredicate::and;
             break;
         case ANY:
             // Find any is the default find type.
             // Fallthrough.
         default:
-            operationType = (a, b) -> (MomentumPredicate) a.or(b);
+            operationType = MomentumPredicate::or;
             break;
         }
 
